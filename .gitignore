@@ -1,0 +1,8 @@
+pmir/
+
+venv/
+.vscode
+*.egg-info/
+**/__pycache__
+pip-wheel-metadata/
+site/

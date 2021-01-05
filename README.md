@@ -1,4 +1,4 @@
-# IPFS BitTorrent Mirror
+# Libgen Seedtools
 
 A python utility to fetch and seed a common dataset to both IPFS and a BitTorrent tracker.
 
@@ -13,6 +13,34 @@ Originally designed to help individuals strengthen the Library Genesis collectio
 * **Clone a dataset**: Find files from a large dataset where some parts are available from ipfs and others from bittorrent.
 * **Mirror from BitTorrent to IPFS** - If you only have a .torrent file, this tool will clone it in IPFS.  However, if you only have a CID, this tool will not create a torrent file.
 
+## Usage
+
+``` bash
+# generate configuration
+libgen-seedtools generate-config
+
+# fetch and deploy torrent files
+libgen-seedtools fetch
+```
+
+Output will look something like this
+
+``` text
+~$ libgen-seedtools fetch
+Found 5932 torrent files (130.47 TB) needing seeders
+  Seeders   MEAN=1.725724881995954 MEDIAN=2.0
+  DHT Peers MEAN=4.369521240728253 MEDIAN=4.0
+  Size      MEAN=21.99 GB MEDIAN=9.74 GB
+Searching for criteria:
+  max_disk_usage: 2TB
+  min_seeders:    1
+  max_seeders:    3
+  types:          ['fiction', 'books']
+Found 173 matches totaling 2 TB
+Fetching torrent files...  [####################################]  100%                                     
+Done
+```
+
 ## How it works
 
 Provide a manifest file (or several) describing pairings between `.torrent` files and IPFS CID hashes.  This tool will iterate the list, attempt to retreive the data from one network, then once it is successfully fetched, propogate it to the other.
@@ -23,32 +51,6 @@ Ideally a scheduler like cron or systemd will run a round of checks at intervals
 
 If users all attempt to seed the most-needed files first, eventually the network will be seeded bottom-up.
 
-## Configuration
-
-See `./config.example.json`
-
-## Manifest Schema
-
-Peerfiles are a manifest of torrent/cid pairs that belong to some common group.  Manifests for the project or dataset you want to seed should come from an official community source.
-
-```json
-{
-    "name": "Libgen SciTech Repository",
-    "description": "The main libgen repository",
-    "tags": ["scitech"],
-    "pairs": [
-        {
-            "torrent_file": "http://libgen.rs/repository_torrent/r_000.torrent",
-            "ipfs_cid": "bafykbzaceaeofefgje22l7rhgtcgs22m32f4ysw5nqa3ty5zawfovqam7pj2c",
-        },
-        {
-            "torrent_file": "http://libgen.rs/repository_torrent/r_1000.torrent",
-            "ipfs_cid": "bafykbzacec26l2xeok4xwa3bsuyn5bw7wismuiyudfbgqsozcsicwej4suqhi",
-        }
-        /* ... */
-    ]
-}
-```
 
 ## Prerequisites
 

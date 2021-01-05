@@ -1,5 +1,6 @@
-pmir/
-
+libgen-seedtools-data/
+config.json
+torrent_data.json
 venv/
 .vscode
 *.egg-info/

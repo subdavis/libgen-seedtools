@@ -25,6 +25,7 @@ class Torrent(BaseModel):
     data: TorrentFileData
     ratio: float
     progress: float
+    done: bool
 
 
 class TorrentConnectionSettings(BaseModel):

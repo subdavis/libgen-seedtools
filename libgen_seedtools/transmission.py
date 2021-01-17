@@ -26,4 +26,5 @@ def add_torrent(ctx: Ctx, tfd: TorrentFileData) -> Torrent:
         data=tfd,
         ratio=torrent.ratio if torrent.ratio >= 0 else 0,
         progress=torrent.progress,
+        done=torrent.status == 'seeding',
     )

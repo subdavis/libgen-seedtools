@@ -40,6 +40,7 @@ def generate_config(ctx):
 
 @cli.command(name="fetch")
 @click.option("-ul", "--update-list", is_flag=True)
+@click.option("-d", "--dry-run", is_flag=True)
 @click.pass_obj
-def fetch(ctx, update_list):
-    fetchall(ctx, update_list)
+def fetch(ctx, update_list, dry_run):
+    fetchall(ctx, update_list, dry_run)

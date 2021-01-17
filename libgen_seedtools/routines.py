@@ -20,7 +20,9 @@ jsonfilepath = "./torrent_data.json"
 
 def fetch_torrent_file(ctx: Ctx, data: TorrentFileData, depth=0):
     filename = Path(data.link).name
-    expected_path = Path(ctx.config.settings.torrent_files_dir) / filename
+    parent = Path(ctx.config.settings.torrent_files_dir)
+    parent.mkdir(parents=True, exist_ok=True)
+    expected_path = parent / filename
     data.path = os.path.abspath(expected_path)
     if not expected_path.exists():
         urlretrieve(data.link, expected_path)

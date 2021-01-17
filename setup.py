@@ -7,9 +7,9 @@ with open(os.path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name="Library Genesis Seedtools",
+    name="libgen-seedtools",
     author="Brandon Davis",
-    version="0.1.0",
+    version="0.2.0",
     author_email="libgen-seedtools@subdavis.com",
     url="https://github.com/subdavis/libgen-seedtools",
     long_description=long_description,

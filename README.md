@@ -6,6 +6,14 @@ A python utility to fetch and seed a common dataset to both IPFS and a BitTorren
 
 [Read the LibGen IPFS Seeding Guide](https://freeread.org/ipfs/)
 
+## Install
+
+``` bash
+pipx install libgen-seedtools
+# or
+pip3 install libgen-seedtools
+```
+
 ## Why I made this
 
 * The libgen librarians and maintainers don't provide enough guidance or strategy for regular people to help.

@@ -53,7 +53,7 @@ def load_torrent_data(
     return data
 
 
-def fetchall(ctx: Ctx, update_list=False, dry_run=False) -> None:
+def fetchall(ctx: Ctx, update_list=False, dry_run=False, auto_verify=False) -> None:
     settings = ctx.config.settings
     max_bytecount = humanfriendly.parse_size(settings.max_disk_usage)
     filtered_filedata = []
@@ -147,7 +147,7 @@ def fetchall(ctx: Ctx, update_list=False, dry_run=False) -> None:
             else:
                 fetch_torrent_file(ctx, row)
                 if ctx.config.torrent.enabled:
-                    torrents.append(transmission_add_torrent(ctx, row))
+                    torrents.append(transmission_add_torrent(ctx, row, auto_verify))
                 bytecount += row.size_bytes
 
     if ctx.config.torrent.enabled and len(torrents) > 0:

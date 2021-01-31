@@ -39,8 +39,23 @@ def generate_config(ctx):
 
 
 @cli.command(name="fetch")
-@click.option("-ul", "--update-list", is_flag=True)
-@click.option("-d", "--dry-run", is_flag=True)
+@click.option(
+    "-ul",
+    "--update-list",
+    is_flag=True,
+    help="Update manifest list, even if you already have a copy",
+)
+@click.option(
+    "-d",
+    "--dry-run",
+    is_flag=True,
+    help="Only download manifest.  Don't pull .torrent files",
+)
+@click.option(
+    "--auto-verify",
+    is_flag=True,
+    help="Attempt to verify newly added torrents if you expect them to already be found completed on disk.",
+)
 @click.pass_obj
-def fetch(ctx, update_list, dry_run):
-    fetchall(ctx, update_list, dry_run)
+def fetch(ctx, update_list, dry_run, auto_verify):
+    fetchall(ctx, update_list, dry_run, auto_verify)

@@ -1,6 +1,6 @@
 import json
 import os
-from typing import Any, Dict, List, Literal, Union
+from typing import Any, Dict, List, Union
 
 from pydantic import BaseModel
 
@@ -30,8 +30,8 @@ class Torrent(BaseModel):
 
 class TorrentConnectionSettings(BaseModel):
     url: str = "http://localhost:9091"
-    username: str = "username"
-    password: str = "password"
+    username: Union[str, None] = "username"
+    password: Union[str, None] = "password"
 
 
 class TorrentConfigSchema(BaseModel):
@@ -51,9 +51,7 @@ class SettingsSchema(BaseModel):
     torrent_data_url: str = "https://phillm.net/libgen-stats-formatted.php"
     max_disk_usage: str = "2TB"
     default_source: str = "torrent"
-    include_types: List[
-        Union[Literal["fiction"], Literal["books"], Literal["scimag"]]
-    ] = ["fiction", "books", "scimag"]
+    include_types: List[str] = ["fiction", "books", "scimag"]
     torrent_seeders_range: List[int] = [1, 3]
     ipfs_seeders_range: List[int] = [1, 3]
     ipfs_default_hash_algo: str = "blake2b-256"

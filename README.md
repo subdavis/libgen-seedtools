@@ -10,6 +10,8 @@ A python utility to fetch and seed a common dataset to both IPFS and a BitTorren
 
 ## Install
 
+Python 3.8 or greater is required.
+
 ``` bash
 pipx install libgen-seedtools
 # or

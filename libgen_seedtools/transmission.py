@@ -1,5 +1,6 @@
 from urllib.parse import urlparse
 from datetime import datetime
+from pytz import utc
 
 from transmission_rpc import client, torrent
 
@@ -19,7 +20,7 @@ def _make_client(ctx: Ctx) -> client.Client:
 
 
 def add_torrent(ctx: Ctx, tfd: TorrentFileData, auto_verify=False) -> Torrent:
-    now = datetime.now()
+    now = utc.localize(datetime.utcnow())
     c = _make_client(ctx)
     file_uri = f"file://{tfd.path}"
     torrent_id = c.add_torrent(file_uri)

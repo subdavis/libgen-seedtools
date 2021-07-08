@@ -24,6 +24,7 @@ setup(
         "ipfshttpclient",
         "pydantic",
         "pyjwt",
+        "pytz",
         "transmission-rpc",
         "requests",
         "requests-toolbelt",

@@ -48,7 +48,7 @@ class IpfsConfigSchema(BaseModel):
 class SettingsSchema(BaseModel):
     torrent_files_dir: str = "./libgen-seedtools-data/torrentfiles"
     assets_dir: str = "./libgen-seedtools-data/data"
-    torrent_data_url: str = "https://phillm.net/libgen-stats-formatted.php"
+    torrent_data_url: List[str] = [ "https://phillm.net/libgen-stats-formatted.php", "https://zrthstr.github.io/libgen_torrent_cardiography/torrent.json"]
     max_disk_usage: str = "2TB"
     default_source: str = "torrent"
     include_types: List[str] = ["fiction", "books", "scimag"]

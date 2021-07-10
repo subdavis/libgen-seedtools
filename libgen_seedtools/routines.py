@@ -67,8 +67,8 @@ def load_torrent_data(
     data: List[TorrentFileData] = []
     if not os.path.exists(jsonfilepath) or force:
         with open(jsonfilepath, "w") as f:
-            resp = http_get_with_failover(ctx.config.settings.torrent_data_url)
-            json.dump(resp.json(), f)
+            json_resp = http_get_with_failover(ctx.config.settings.torrent_data_url)
+            json.dump(json_resp, f)
     with open(jsonfilepath) as f:
         raw = json.load(f)
         for d in raw:

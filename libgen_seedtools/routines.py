@@ -52,7 +52,7 @@ def http_get_with_failover(urls: List[str]) -> requests.models.Response:
         except:
             e = sys.exc_info()[0]
             click.secho(
-                f"Failed to fetch LibGen torrent health data from url: {url}. {e}. Trying next url.",
+                f"Failed to fetch LibGen torrent health data from url: {url}\n{e} Trying next url.",
                 fg="red",
                 reset=False,
             )

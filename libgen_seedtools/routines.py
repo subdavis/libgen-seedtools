@@ -44,7 +44,7 @@ def http_get_with_failover(urls: List[str]):
     for n, url in enumerate(urls):
         try:
             resp = requests.get(url)
-            response.raise_for_status()
+            resp.raise_for_status()
         except requests.exceptions.HTTPError as e:
             if n == len(urls):
                 raise SystemExit(err)

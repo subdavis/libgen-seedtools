@@ -39,18 +39,26 @@ def fetch_torrent_file(ctx: Ctx, data: TorrentFileData, depth=0):
             raise err
 
 def http_get_with_failover(urls: List[str]) -> requests.models.Response:
-    """ Try each untill success, only raise exception on error if we have no other urls left to try"""
+    """ Try each untill success, only raise exception on error if we have no other urls left to try
+        Making sure to also have the json parsing inside a try block so next server gest used if json is invalide.
+    """
+
     shuffle(urls)
     for n, url in enumerate(urls):
         try:
             resp = requests.get(url)
             resp.raise_for_status()
-        except requests.exceptions.HTTPError as e:
+            return resp.json()
+        except:
+            e = sys.exc_info()[0]
+            click.secho(
+                f"Failed to fetch LibGen torrent health data from url: {url}. {e}. Trying next url.",
+                fg="red",
+                reset=False,
+            )
             if n == len(urls):
                 raise SystemExit(err)
-            print(f"Failed to fetch LibGen torrent health data from url: {url}. Trying next url.")
             continue
-    return resp
 
 
 def load_torrent_data(

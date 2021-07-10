@@ -38,7 +38,7 @@ def fetch_torrent_file(ctx: Ctx, data: TorrentFileData, depth=0):
         else:
             raise err
 
-def http_get_with_failover(urls: List[str]):
+def http_get_with_failover(urls: List[str]) -> requests.models.Response:
     """ try all urls in, only raise exception if we have no other urls to try"""
     shuffle(urls)
     for n, url in enumerate(urls):
@@ -50,7 +50,6 @@ def http_get_with_failover(urls: List[str]):
                 raise SystemExit(err)
             print(f"Failed to fetch LibGen torrent health data from url: {url}. Trying next url.")
             continue
-    print("TTTYP: ", type(resp))
     return resp
 
 

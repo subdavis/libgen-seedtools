@@ -38,7 +38,7 @@ def fetch_torrent_file(ctx: Ctx, data: TorrentFileData, depth=0):
         else:
             raise err
 
-def http_get_with_failover(urls: List[str]) -> List[]:
+def http_get_with_failover(urls: List[str]) -> List:
     """ Try each untill success, only raise exception on error if we have no other urls left to try
         Making sure to also have the json parsing inside a try block so next server gest used if json is invalide.
     """

@@ -44,7 +44,7 @@ def load_torrent_data(
     data: List[TorrentFileData] = []
     if not os.path.exists(jsonfilepath) or force:
         with open(jsonfilepath, "w") as f:
-            resp = requests.get(ctx.config.settings.torrent_data_url)
+            resp = requests.get(ctx.config.settings.torrent_data_url[1])
             json.dump(resp.json(), f)
     with open(jsonfilepath) as f:
         raw = json.load(f)

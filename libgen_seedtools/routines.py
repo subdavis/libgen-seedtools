@@ -39,7 +39,7 @@ def fetch_torrent_file(ctx: Ctx, data: TorrentFileData, depth=0):
             raise err
 
 def http_get_with_failover(urls: List[str]) -> requests.models.Response:
-    """ try all urls in, only raise exception if we have no other urls to try"""
+    """ Try each untill success, only raise exception on error if we have no other urls left to try"""
     shuffle(urls)
     for n, url in enumerate(urls):
         try:

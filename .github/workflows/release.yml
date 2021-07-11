@@ -15,7 +15,7 @@ jobs:
           python-version: '3.7'
           architecture: 'x64'
 
-      - run: pip install twine
+      - run: pip install twine wheel
 
       - run: python setup.py sdist bdist_wheel
       - run: twine upload dist/*

@@ -4,6 +4,7 @@ import re
 import statistics
 import sys
 from pathlib import Path, PurePath
+from random import shuffle
 from typing import List
 from urllib.parse import urlparse
 from urllib.request import urlretrieve
@@ -39,11 +40,22 @@ def fetch_torrent_file(ctx: Ctx, data: TorrentFileData, depth=0):
             raise err
 
 def http_get_with_failover(urls: List[str]) -> List:
+<<<<<<< HEAD
     """ Try each untill success, only raise exception on error if we have no other urls left to try
         Making sure to also have the json parsing inside a try block so next server gest used if json is invalide.
     """
 
     for url in urls:
+=======
+    """ Try each URL until one succeeds.
+        Only raise exception on error if we have no other URLs left to try.
+        Making sure to also have the json parsing inside a try block,
+        for the case that a server responds with invalide json.
+    """
+
+    shuffle(urls)
+    for n, url in enumerate(urls):
+>>>>>>> f0e79981a27e1031ffea5fece92a8d7000f65bfc
         try:
             resp = requests.get(url)
             resp.raise_for_status()
@@ -55,7 +67,13 @@ def http_get_with_failover(urls: List[str]) -> List:
                 fg="red",
                 reset=False,
             )
+<<<<<<< HEAD
     raise SystemExit(err)
+=======
+            if n == len(urls):
+                raise SystemExit(err)
+            continue
+>>>>>>> f0e79981a27e1031ffea5fece92a8d7000f65bfc
 
 
 def load_torrent_data(

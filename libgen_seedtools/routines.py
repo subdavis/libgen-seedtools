@@ -2,8 +2,8 @@ import json
 import os
 import re
 import statistics
+import sys
 from pathlib import Path, PurePath
-from random import shuffle
 from typing import List
 from urllib.parse import urlparse
 from urllib.request import urlretrieve
@@ -43,8 +43,7 @@ def http_get_with_failover(urls: List[str]) -> List:
         Making sure to also have the json parsing inside a try block so next server gest used if json is invalide.
     """
 
-    shuffle(urls)
-    for n, url in enumerate(urls):
+    for url in urls:
         try:
             resp = requests.get(url)
             resp.raise_for_status()
@@ -56,9 +55,7 @@ def http_get_with_failover(urls: List[str]) -> List:
                 fg="red",
                 reset=False,
             )
-            if n == len(urls):
-                raise SystemExit(err)
-            continue
+    raise SystemExit(err)
 
 
 def load_torrent_data(

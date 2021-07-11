@@ -2,6 +2,7 @@ import json
 import os
 import re
 import statistics
+import sys
 from pathlib import Path, PurePath
 from typing import List
 from urllib.parse import urlparse
@@ -37,6 +38,21 @@ def fetch_torrent_file(ctx: Ctx, data: TorrentFileData, depth=0):
         else:
             raise err
 
+def http_get_with_failover(urls: List[str]) -> List:
+    for url in urls:
+        try:
+            resp = requests.get(url)
+            resp.raise_for_status()
+            return resp.json()
+        except:
+            e = sys.exc_info()[0]
+            click.secho(
+                f"Failed to fetch LibGen torrent health data from url: {url}\n{e} Trying next url.",
+                fg="red",
+                reset=False,
+            )
+    raise SystemExit(err)
+
 
 def load_torrent_data(
     ctx: Ctx, jsonfilepath: str, force=False
@@ -44,8 +60,8 @@ def load_torrent_data(
     data: List[TorrentFileData] = []
     if not os.path.exists(jsonfilepath) or force:
         with open(jsonfilepath, "w") as f:
-            resp = requests.get(ctx.config.settings.torrent_data_url)
-            json.dump(resp.json(), f)
+            json_resp = http_get_with_failover(ctx.config.settings.torrent_data_url)
+            json.dump(json_resp, f)
     with open(jsonfilepath) as f:
         raw = json.load(f)
         for d in raw:

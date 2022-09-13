@@ -54,6 +54,22 @@ def http_get_with_failover(urls: List[str]) -> List:
     raise SystemExit(err)
 
 
+def http_get_with_failover(urls: List[str]) -> List:
+    for url in urls:
+        try:
+            resp = requests.get(url)
+            resp.raise_for_status()
+            return resp.json()
+        except:
+            e = sys.exc_info()[0]
+            click.secho(
+                f"Failed to fetch LibGen torrent health data from url: {url}\n{e} Trying next url.",
+                fg="red",
+                reset=False,
+            )
+    raise SystemExit(err)
+
+
 def load_torrent_data(
     ctx: Ctx, jsonfilepath: str, force=False
 ) -> List[TorrentFileData]:
@@ -78,7 +94,7 @@ def fetchall(ctx: Ctx, update_list=False, dry_run=False, auto_verify=False) -> N
     click.secho("Loading torrent data.", bold=True, fg="black")
     filedata = sorted(
         load_torrent_data(ctx, jsonfilepath, force=update_list),
-        key=lambda x: int(re.search('\d+', x.name)[0]),
+        key=lambda x: int(re.search("\d+", x.name)[0]),
     )
 
     seeders_arr = [x.seeders for x in filedata]

@@ -9,7 +9,7 @@ with open(os.path.join(this_directory, "README.md"), encoding="utf-8") as f:
 setup(
     name="libgen-seedtools",
     author="Brandon Davis",
-    version="0.3.0",
+    version="0.4.0",
     author_email="libgen-seedtools@subdavis.com",
     url="https://github.com/subdavis/libgen-seedtools",
     long_description=long_description,

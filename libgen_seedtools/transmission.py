@@ -1,7 +1,7 @@
-from urllib.parse import urlparse
 from datetime import datetime
-from pytz import utc
+from urllib.parse import urlparse
 
+from pytz import utc
 from transmission_rpc import client, torrent
 
 from .schemas import Ctx, Torrent, TorrentFileData
@@ -32,5 +32,5 @@ def add_torrent(ctx: Ctx, tfd: TorrentFileData, auto_verify=False) -> Torrent:
         data=tfd,
         ratio=torrent.ratio if torrent.ratio >= 0 else 0,
         progress=torrent.progress,
-        done=torrent.status == 'seeding',
+        done=torrent.status == "seeding",
     )

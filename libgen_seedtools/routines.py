@@ -85,7 +85,7 @@ def fetchall(ctx: Ctx, update_list=False, dry_run=False, auto_verify=False) -> N
     seeders_arr = [x.seeders for x in filedata]
     seeders_mean = statistics.mean(seeders_arr)
     seeders_median = statistics.median(seeders_arr)
-    dht_peers_arr = [x.dht_peers for x in filedata]
+    dht_peers_arr = [x.dht_peers if x.dht_peers else 0 for x in filedata]
     dht_peers_mean = statistics.mean(dht_peers_arr)
     dht_peers_median = statistics.median(dht_peers_arr)
     size_arr = [x.size_bytes for x in filedata]

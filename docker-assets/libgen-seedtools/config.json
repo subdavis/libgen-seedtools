@@ -1,0 +1,42 @@
+{
+  "ipfs": {
+    "connection_settings": {
+      "addr": "/dns/localhost/tcp/5001/http"
+    },
+    "enabled": false
+  },
+  "settings": {
+    "assets_dir": "./libgen-seedtools-data/data",
+    "default_source": "torrent",
+    "include_types": [
+      "fiction",
+      "books",
+      "scimag"
+    ],
+    "ipfs_default_hash_algo": "blake2b-256",
+    "ipfs_seeders_range": [
+      1,
+      3
+    ],
+    "max_disk_usage": "23GB",
+    "torrent_data_url": [
+      "https://phillm.net/libgen-stats-formatted.php",
+      "https://zrthstr.github.io/libgen_torrent_cardiography/torrent.json"
+    ],
+    "torrent_files_dir": "./libgen-seedtools-data/torrentfiles",
+    "torrent_seeders_range": [
+      1,
+      3
+    ]
+  },
+  "torrent": {
+    "connection_settings": {
+      "password": "password",
+      "url": "http://localhost:9091",
+      "username": "username"
+    },
+    "enabled": true,
+    "provider": "transmission"
+  },
+  "version": 1.0
+}

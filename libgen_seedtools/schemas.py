@@ -11,8 +11,8 @@ class TorrentFileData(BaseModel):
     infohash: str
     created_unix: int
     scraped_date: int
-    dht_scraped: int
-    dht_peers: int
+    dht_scraped: Union[int, None]
+    dht_peers: Union[int, None]
     seeders: int
     leechers: int
     size_bytes: int

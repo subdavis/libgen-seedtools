@@ -1,5 +1,6 @@
 libgen-seedtools-data/
 config.json
+!/docker-assets/**
 torrent_data.json
 venv/
 .vscode

@@ -1,9 +1,8 @@
 version: "3.8"
 services:
   libgen-seedtools:
-    ### needs to be changed again to point to subdavis
-    image: ghcr.io/zrthstr/libgen-seedtools:latest
-    #image: ghcr.io/subdavis/libgen-seedtools:latest
+    #image: ghcr.io/zrthstr/libgen-seedtools:latest
+    image: ghcr.io/subdavis/libgen-seedtools:latest
     build:
       context: .
       dockerfile: Dockerfile

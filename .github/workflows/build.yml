@@ -1,12 +1,10 @@
 name: Publish Docker Container
 
 on:
-  #pull_request:
   push:
     branches:
       - main
       - Dockerize
-  #workflow_dispatch:
 
 jobs:
   publish:
@@ -22,7 +20,6 @@ jobs:
       - name: Build and push server
         uses: docker/build-push-action@v2
         with:
-          # changing this to my ghcr for testing purposes
-          #tags: ghcr.io/subdavis/libgen-seedtools:latest
-          tags: ghcr.io/zrthstr/libgen-seedtools:latest
+          tags: ghcr.io/subdavis/libgen-seedtools:latest
+          #tags: ghcr.io/zrthstr/libgen-seedtools:latest
           push: true

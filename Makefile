@@ -2,8 +2,8 @@
 ########## debug and untils ############
 ########################################
 
-DOCKER_IMGURL = ghcr.io/zrthstr/libgen-seedtools:latest
-#DOCKER_IMGURL = ghcr.io/subdavis/libgen-seedtools:latest
+#DOCKER_IMGURL = ghcr.io/zrthstr/libgen-seedtools:latest
+DOCKER_IMGURL = ghcr.io/subdavis/libgen-seedtools:latest
 
 pull:
 	docker pull $(DOCKER_IMGURL)

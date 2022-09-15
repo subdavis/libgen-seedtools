@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-####!/usr/bin/env sh
 
 # turn on sh's job control
 set -m

@@ -1,0 +1,13 @@
+/.idea/
+*.pyc
+*.egg-info/
+.vscode
+.eggs/
+.tox
+.mypy_cache
+.github
+Dockerfile
+venv/
+build/
+dist/
+docs/

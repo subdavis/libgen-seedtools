@@ -1,19 +1,21 @@
-version: "3.5"
+version: "3.8"
 services:
-  transmission:
-    image: ghcr.io/linuxserver/transmission
-    container_name: transmission
-    environment:
-      - PUID=1000
-      - PGID=1000
-      - TZ=America/New_York
-      - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
-      - USER=username #optional
-      - PASS=password #optional
+  libgen-seedtools:
+    #image: ghcr.io/zrthstr/libgen-seedtools:latest
+    image: ghcr.io/subdavis/libgen-seedtools:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: libgen-seedtools
+    restart: unless-stopped
+    ### using root for now
+    #user: ${PUID:-1000}
+    #ports:
+    #  - "59000:59000"
     volumes:
-      - ./libgen-seedtools-data/transmission:/config
-      - ./libgen-seedtools-data/data:/downloads
-    ports:
-      - 9091:9091
-      - 51413:51413
-      - 51413:51413/udp
+      - libgen-data:/opt/persistent
+        #- ${PWD}/docker-assets/libgen-seedtools/config.json:/opt/libgen-seedtools/config.json
+        #- ${PWD}/docker-assets/transmission-daemon/settings.json:/opt/docker-assets/transmission-daemon/settings.json
+
+volumes:
+  libgen-data:

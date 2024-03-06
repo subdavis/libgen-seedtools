@@ -16,12 +16,12 @@ pipx install libgen-seedtools
 pip3 install libgen-seedtools
 ```
 
-## Why I made this
+## Why Brandon Davis (subdavis) made this
 
-* The libgen librarians and maintainers don't provide enough guidance or strategy for regular people to help.
-* Without a unified strategy, seeding is random and inefficient, clustering at the ends.
+* The Libgen librarians and maintainers don't provide enough guidance or strategy for regular people to help.
+* Without a unified strategy, seeding is random and inefficient, with clustering at the ends.
 * It's tedious and costly to click through and import individual torrents.
-* Not everyone has hundreds of terrabytes of disk and bandwidth to spare.
+* Not everyone has hundreds of terabytes of disk and bandwidth to spare.
 
 This tool will allow all users to act together to strengthen the network under the same strategy, whether they have 20TB of disk or 200GB of disk. Using `libgen-seedtools` will ensure you get the most bang for your buck.
 
@@ -34,7 +34,7 @@ It also lowers the tedious burden of organization.  Start seeding in just a few 
 
 The following are planned for the near future:
 
-* **Future: Clone a dataset**: Find files from a large dataset where some parts are available from ipfs and others from bittorrent.
+* **Future: Clone a dataset**: Find files from a large dataset where some parts are available from IPFS and others from BitTorrent.
 * **Future: Mirror from BitTorrent to IPFS** - If you only have a .torrent file, this tool will clone it in IPFS.  However, if you only have a CID, this tool will not create a torrent file.
 * **Future: meaningful metrics** - Get stats on how much you've seeded, and see how the network coverage changes over time.  Keep up with changing coverage by dropping well-seeded files and picking up more urgent ones.
 
@@ -68,9 +68,9 @@ Done
 
 ## The end goal
 
-Provide a manifest file describing `.torrent` files. This tool will iterate the list, attempt to retreive the data from one network, then once it is successfully fetched, propogate it to the other.
+Provide a manifest file describing `.torrent` files. This tool will iterate the list, and attempt to retrieve the data from one network, then once it is successfully fetched, propagate it to the other.
 
-It is just a command-line script, not a service, so the user must initiate each "round" of checks.  If a torrent is added to transmission today and takes 4 hours to dowload, you'll have to come back 4 hours later and run another "round" to collect the newly completed data and pin it to your ipfs node.
+It is just a command-line script, not a service, so the user must initiate each "round" of checks.  If a torrent is added to transmission today and takes 4 hours to download, you'll have to come back 4 hours later and run another "round" to collect the newly completed data and pin it to your IPFS node.
 
 Ideally a scheduler like cron or systemd will run a round of checks at intervals
 
@@ -79,7 +79,7 @@ If users all attempt to seed the most-needed files first, eventually the network
 ## Prerequisites
 
 * A transmission torrent server
-* An ipfs server
+* An IPFS server
 
 If you aren't already running these, you can use the included docker-compose.  If you run these services on your own, you MUST have a shared data volume accessible from both services.
 

@@ -4,7 +4,6 @@
 
 A python utility to fetch and seed a common dataset to both <s>IPFS and</s> a BitTorrent tracker. Designed to help individuals strengthen the Library Genesis collection, but written to be generally useful for mirroring between networks.
 
-[Read the LibGen IPFS Seeding Guide](https://freeread.org/ipfs/)
 
 ## Install
 
@@ -14,7 +13,7 @@ pipx install libgen-seedtools
 pip3 install libgen-seedtools
 ```
 
-## Why I made this
+## Why this was made
 
 * The libgen librarians and maintainers don't provide enough guidance or strategy for regular people to help.
 * Without a unified strategy, seeding is random and inefficient, clustering at the ends.
@@ -77,9 +76,12 @@ If users all attempt to seed the most-needed files first, eventually the network
 ## Prerequisites
 
 * A transmission torrent server
-<s>* An ipfs server</s>
+* <s>* An ipfs server</s>
 
 If you aren't already running these, you can use the included docker-compose.  If you run these services on your own, you MUST have a shared data volume accessible from both services.
+
+## See also
+* [Read the LibGen IPFS Seeding Guide](https://freeread.org/ipfs/)
 
 ## Credit
 

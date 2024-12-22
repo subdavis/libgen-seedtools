@@ -1,14 +1,37 @@
-# https://copdips.com/2020/04/making-isort-compatible-with-black.html
-# https://pycqa.github.io/isort/docs/configuration/options/#include-trailing-comma
-# https://stackoverflow.com/questions/62069596/configuring-isort-and-autoflake-with-project-toml/63678419#63678419
+[project]
+name = "libgen-seedtools"
+version = "0.5.2"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+authors=[{name="Brandon Davis" ,email="libgen-seedtools@subdavis.com"},{name="zrthstr"}]
+license = {text = "MIT License"}
+dependencies = [
+    "click>=8.1.7",
+    "click-aliases>=1.0.5",
+    "humanfriendly>=10.0",
+    "pydantic>=2.10.4",
+    "pytz>=2024.2",
+    "requests>=2.32.3",
+    "torrentool>=1.2.0",
+    "transmission-rpc>=7.0.11",
+]
 
-[tool.isort]
-multi_line_output = 3
-line_length = 88
-include_trailing_comma = true
+[dependency-groups]
+dev = [
+    "mypy>=1.14.0",
+    "pytest>=8.3.4",
+]
 
+[project.urls]
+Repository = "https://github.com/subdavis/libgen-seedtools"
 
-[tool.black]
-line_length = 88
-target-version = ['py312']
-exclude='\.eggs|\.git|\.mypy_cache|\.tox|\.venv|_build|buck-out|build|dist|venv'
+[project.scripts]
+libgen-seedtools = "libgen_seedtools.cli:cli"
+
+[tool.uv]
+package = true
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"

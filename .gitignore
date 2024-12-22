@@ -7,3 +7,4 @@ venv/
 **/__pycache__
 pip-wheel-metadata/
 site/
+.venv

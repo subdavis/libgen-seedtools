@@ -1,9 +1,0 @@
-isort
-black
-mypy
-twine
-mkdocs
-mkdocs-material
-setuptools
-pytest
-transmissionrpc
